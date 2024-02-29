@@ -24,8 +24,16 @@ Route.get('/', async () => {
   return { hello: 'world' }
 })
 
-Route.get('/posts', 'PostsController.index')
-Route.post('/posts', 'PostsController.store')
+Route.post('/register', 'AuthController.register')
+Route.post('/login', 'AuthController.login')
+
+// Route.get('/posts', 'PostsController.index')
+// Route.post('/posts', 'PostsController.store')
+Route.resource('posts', 'PostsController').middleware({
+  create: ['auth'],
+  store: ['auth'],
+  destroy: ['auth'],
+})
 
 Route.get('/categories', 'CategoriesController.index')
-Route.post('/categories', 'CategoriesController.store')
+Route.post('/categories', 'CategoriesController.store').middleware('auth')

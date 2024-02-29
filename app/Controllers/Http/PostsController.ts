@@ -8,6 +8,10 @@ export default class PostsController {
     // return await Post.all()
   }
 
+  async create() {
+    
+  }
+
   async store({ request }: HttpContextContract) {
     const newPostData = schema.create({
       title: schema.string(),
@@ -30,6 +34,22 @@ export default class PostsController {
     const post = await Post.create(data)
 
     return post
+  }
+
+  async show() {
+    
+  }
+  
+  async edit() {
+    
+  }
+
+  async update() {
+    
+  }
+
+  async destroy() {
+    
   }
 
   // Fungsi untuk mengubah title menjadi slug
